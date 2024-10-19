@@ -14,7 +14,7 @@ public class ShamirSecretSharing {
         int n = points.size();
 
         for (int i = 0; i < n; i++) {
-            double term = points.get(i).y.doubleValue();  // yi
+            double term = points.get(i).y.doubleValue();
 
             for (int j = 0; j < n; j++) {
                 if (i != j) {
@@ -28,7 +28,6 @@ public class ShamirSecretSharing {
         return constant;
     }
 
-    // Function to parse the input
     public static List<Point> parseInput(Map<Integer, BaseValue> inputMap) {
         List<Point> points = new ArrayList<>();
 
@@ -43,7 +42,6 @@ public class ShamirSecretSharing {
         return points;
     }
 
-    // Point class to store the (x, y) coordinates
     static class Point {
         int x;
         BigInteger y;
@@ -66,14 +64,12 @@ public class ShamirSecretSharing {
     }
 
     public static void main(String[] args) {
-        // Test Case 1
         Map<Integer, BaseValue> testCase1 = new HashMap<>();
         testCase1.put(1, new BaseValue(10, "4"));
         testCase1.put(2, new BaseValue(2, "111"));
         testCase1.put(3, new BaseValue(10, "12"));
         testCase1.put(6, new BaseValue(4, "213"));
 
-        // Test Case 2
         Map<Integer, BaseValue> testCase2 = new HashMap<>();
         testCase2.put(1, new BaseValue(6, "13444211440455345511"));
         testCase2.put(2, new BaseValue(15, "aed7015a346d63"));
@@ -86,12 +82,10 @@ public class ShamirSecretSharing {
         testCase2.put(9, new BaseValue(12, "45153788322a1255483"));
         testCase2.put(10, new BaseValue(7, "1101613130313526312514143"));
 
-        // Solve for Test Case 1
         List<Point> points1 = parseInput(testCase1);
         double secret1 = lagrangeInterpolation(points1);
         System.out.println("The secret (constant term) for Test Case 1 is: " + Math.round(secret1));
 
-        // Solve for Test Case 2
         List<Point> points2 = parseInput(testCase2);
         double secret2 = lagrangeInterpolation(points2);
         System.out.println("The secret (constant term) for Test Case 2 is: " + Math.round(secret2));
